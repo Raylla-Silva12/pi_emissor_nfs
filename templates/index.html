@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block page_title %}Sistema de Notas Fiscais{% endblock %}
+
+{% block page_sections %}
+<section id="dashboard">
+    <h2>Dashboard</h2>
+    <p>Conteúdo do Dashboard</p>
+</section>
+
+<section id="novo_pedido">
+    <h2>Novo Pedido</h2>
+    <form method="POST" action="{{ url_for('registrar_pedido') }}">
+        <div class="mb-3">
+            <label for="nome_cliente" class="form-label">Nome do Cliente</label>
+            <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" required>
+        </div>
+        <div class="mb-3">
+            <label for="produtos" class="form-label">Produtos</label>
+            <textarea class="form-control" id="produtos" name="produtos" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+        </div>
+        <div class="mb-3">
+            <label for="valor_total" class="form-label">Valor Total</label>
+            <input type="text" class="form-control" id="valor_total" name="valor_total" required>
+        </div>
+        <div class="mb-3">
+            <label for="desconto" class="form-label">Desconto</label>
+            <input type="text" class="form-control" id="desconto" name="desconto">
+        </div>
+        <div class="mb-3">
+            <label for="numero_whatsapp" class="form-label">Número WhatsApp</label>
+            <input type="text" class="form-control" id="numero_whatsapp" name="numero_whatsapp" required>
+        </div>
+        <div class="mb-3">
+            <label for="forma_pagamento" class="form-label">Forma de Pagamento</label>
+            <input type="text" class="form-control" id="forma_pagamento" name="forma_pagamento" required>
+        </div>
+        <div class="mb-3">
+            <label for="endereco_entrega" class="form-label">Endereço de Entrega</label>
+            <textarea class="form-control" id="endereco_entrega" name="endereco_entrega" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Pedido</button>
+    </form>
+</section>
+
+<section id="notas_fiscais">
+    <h2>Notas Fiscais</h2>
+    <p>Lista de Notas Fiscais</p>
+</section>
+{% endblock %}

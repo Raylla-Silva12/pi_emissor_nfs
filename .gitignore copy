@@ -1,0 +1,6 @@
+# Esconde dados sensíveis e arquivos locais
+config.py
+/data/
+__pycache__/
+*.pyc
+.env
