@@ -1,6 +1,8 @@
-DB_HOST = 'localhost'
-DB_USER = 'root'         # ou root
-DB_PASSWORD = 'Josias12'        # substitua pela sua senha
-DB_NAME = 'notas_fiscais'
+# Agora define as variáveis de conexão
+DB_HOST = "hopper.proxy.rlwy.net"    
+DB_PORT = 10425  
+DB_USER = "root" 
+DB_PASSWORD = "AAnOqTuAilEGaGumBGBRWhAKBPDLfBgF"
+DB_NAME = "railway"
 
 DATA_DIR = 'data'  # para salvar os PDFs
