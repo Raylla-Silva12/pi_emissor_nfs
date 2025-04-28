@@ -39,11 +39,12 @@ def novo_pedido():
 @app.route('/registrar_pedido', methods=['POST'])
 def registrar_pedido():
     nome_cliente = request.form['nome_cliente']
+    nome_funcionario = request.form['nome_funcionario']
     produtos = request.form['produtos']
     quantidade = int(request.form['quantidade'])
     valor_total = float(request.form['valor_total'])
     desconto = float(request.form['desconto'] or 0)
-    numero_whatsapp = request.form['numero_whatsapp']
+    numero_whatsapp = int(request.form['numero_whatsapp'])
     forma_pagamento = request.form['forma_pagamento']
     endereco_entrega = request.form['endereco_entrega']
 
@@ -52,11 +53,11 @@ def registrar_pedido():
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO pedidos (
-            nome_cliente, produtos, quantidade, valor_total, desconto,
+            nome_cliente, nome_funcionario, produtos, quantidade, valor_total, desconto,
             numero_whatsapp, forma_pagamento, endereco_entrega
         ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
     """, (
-        nome_cliente, produtos, quantidade, valor_total, desconto,
+        nome_cliente, nome_funcionario, produtos, quantidade, valor_total, desconto,
         numero_whatsapp, forma_pagamento, endereco_entrega
     ))
     conn.commit()
@@ -66,6 +67,7 @@ def registrar_pedido():
     # Gera o PDF da NFE
     pdf_path = gerar_pdf_nfe(
         pedido_id,
+        nome_funcionario,
         nome_cliente,
         produtos,
         quantidade,
