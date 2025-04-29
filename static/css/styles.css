@@ -183,3 +183,27 @@
         margin-left: 0;
     }
 }
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Estilo dos icons */
+
+.a-icon {
+    color: #343a40;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.fa-trash-alt {
+    color: rgb(195, 5, 5);
+}

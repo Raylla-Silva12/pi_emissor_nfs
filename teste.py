@@ -165,27 +165,6 @@ def baixar_nfe(pedido_id):
 def configuracoes():
     return render_template('configuracoes.html')
 
-# Deletar Pedido
-@app.route('/deletar_pedido/<int:pedido_id>', methods=['POST'])
-def deletar_pedido(pedido_id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    # Remove relacionamentos primeiro (pedido_produto, historico_envios, etc.)
-    cursor.execute("DELETE FROM pedido_produto WHERE pedido_id = %s", (pedido_id,))
-    cursor.execute("DELETE FROM historico_envios WHERE pedido_id = %s", (pedido_id,))
-    cursor.execute("DELETE FROM pedidos WHERE pedido_id = %s", (pedido_id,))
-    conn.commit()
-
-    # Remove o PDF gerado (se existir)
-    pdf_path = os.path.join(config.DATA_DIR, f"nfe_{pedido_id}.pdf")
-    if os.path.exists(pdf_path):
-        os.remove(pdf_path)
-
-    conn.close()
-    flash('Pedido deletado com sucesso.', 'success')
-    return redirect(url_for('dashboard'))
-
 # Função para enviar PDF via WhatsApp
 
 # Iniciar app
